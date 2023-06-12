@@ -1,6 +1,6 @@
-'use client';
-import { TbPlaylist } from 'react-icons/tb';
-import { AiOutlinePlus } from 'react-icons/ai';
+"use client";
+import { TbPlaylist } from "react-icons/tb";
+import { AiOutlinePlus } from "react-icons/ai";
 
 interface LibraryProps {
     children: React.ReactNode;
