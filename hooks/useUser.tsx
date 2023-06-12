@@ -24,9 +24,9 @@ export const MyUserContextProvider = (props: Props) => {
     const { session, isLoading: isLoadingUser, supabaseClient: supabase } = useSessionContext();
     const user = useSupaUser();
     const accessToken = session?.access_token ?? null;
-    const [isLoadingData, setIsLoadingData] = useState(false)
-    const [userDetails, setUserDetails] = useState<UserDetails | null>(null)
-    const [subscription, setSubscription] = useState<Subscription | null>(null)
+    const [isLoadingData, setIsLoadingData] = useState(false);
+    const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+    const [subscription, setSubscription] = useState<Subscription | null>(null);
 
     const getUserDetails = () => supabase.from('users').select('*').single();
     const getSubscription = () => supabase.from('subscription').select('*, prices(*, products(*))').in('status', ['trialing', 'active']).single();
@@ -46,9 +46,9 @@ export const MyUserContextProvider = (props: Props) => {
                     }
                     setIsLoadingData(false);
                 }
-            )
+            );
         }
-    }, [user, isLoadingUser])
+    }, [user, isLoadingUser]);
 
     const value = {
         accessToken,
@@ -58,13 +58,13 @@ export const MyUserContextProvider = (props: Props) => {
         subscription
     };
 
-    return <UserContext.Provider value={value} {...props} />
-}
+    return <UserContext.Provider value={value} {...props} />;
+};
 
 export const useUser = () => {
     const context = useContext(UserContext);
     if (context === undefined) {
-        throw new Error('useUser must be used within a MyUserContextProvider')
+        throw new Error('useUser must be used within a MyUserContextProvider');
     }
-    return context
-}
+    return context;
+};
