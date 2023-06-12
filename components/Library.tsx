@@ -1,6 +1,6 @@
-"use client"
-import { TbPlaylist } from "react-icons/tb"
-import { AiOutlinePlus } from 'react-icons/ai'
+'use client';
+import { TbPlaylist } from 'react-icons/tb';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 interface LibraryProps {
     children: React.ReactNode;
@@ -9,7 +9,7 @@ interface LibraryProps {
 export const Library = () => {
     const onClick = () => {
         // Handle click
-    }
+    };
 
     return (
         <div className="flex flex-col">
@@ -22,5 +22,5 @@ export const Library = () => {
             </div>
             <div className="fledx flex-col gap-y-2 mt-4 px-3">List of songs</div>
         </div>
-    )
-}
+    );
+};

@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { FaPlay } from "react-icons/fa"
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { FaPlay } from 'react-icons/fa';
 
 interface ListItemProps {
     image: string;
@@ -14,7 +14,7 @@ const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
     const onClick = () => {
         // Add authentication before push
         router.push(href);
-    }
+    };
     return (
         <button
             onClick={onClick}
@@ -28,6 +28,6 @@ const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
             </div>
         </button>
     );
-}
+};
 
-export default ListItem
+export default ListItem;

@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import { usePathname } from "next/navigation"
-import { useMemo } from "react";
-import { HiHome } from 'react-icons/hi'
-import { BiSearch } from 'react-icons/bi'
-import Box from "./Box";
-import SidebarItem from "./SidebarItem";
-import { Library } from "./Library";
+import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
+import { HiHome } from 'react-icons/hi';
+import { BiSearch } from 'react-icons/bi';
+import Box from './Box';
+import SidebarItem from './SidebarItem';
+import { Library } from './Library';
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -50,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         {children}
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
