@@ -10,7 +10,9 @@ interface ModalProps {
     children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onChange, title, description, children }) => {
+const Modal: React.FC<ModalProps> = ({
+    isOpen, onChange, title, description, children
+}) => {
     return (
         <Dialog.Root
             open={isOpen}
