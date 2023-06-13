@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { MyUserContextProvider } from './useUser';
+import { MyUserContextProvider } from "./useUser";
 
 interface UserProviderProps {
     children: React.ReactNode
