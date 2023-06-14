@@ -1,15 +1,16 @@
-import Sidebar from "@/components/Sidebar";
-import "./globals.css";
-import { Figtree } from "next/font/google";
-import SupabaseProvider from "@/providers/SupabaseProvider";
-import UserProvider from "@/hooks/UserProvider";
-import ModalProvider from "@/providers/ModalProvider";
+import Sidebar from '@/components/Sidebar';
+import './globals.css';
+import { Figtree } from 'next/font/google';
+import SupabaseProvider from '@/providers/SupabaseProvider';
+import UserProvider from '@/providers/UserProvider';
+import ModalProvider from '@/providers/ModalProvider';
+import ToasterProvider from '@/providers/ToasterProvider';
 
-const font = Figtree({ subsets: ["latin"] });
+const font = Figtree({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Spotify",
-  description: "Listen to Music",
+  title: 'Spotify',
+  description: 'Listen to Music',
 };
 
 export default function RootLayout({
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
@@ -28,7 +30,7 @@ export default function RootLayout({
             </Sidebar>
           </UserProvider>
         </SupabaseProvider>
-      </body>
+      </body >
     </html >
   );
 }
