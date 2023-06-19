@@ -2,16 +2,16 @@
 
 import { Song } from '@/types';
 import React from 'react';
-import MediaItem from './MediaItem';
-import LikeButton from './LikeButton';
+import MediaItem from '@/components/MediaItem';
+import LikeButton from '@/components/LikeButton';
 
-interface SearchContentProps {
+interface LikeContentProps {
     songs: Song[];
 
 }
 
 
-const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
+const LikeContent: React.FC<LikeContentProps> = ({ songs }) => {
 
     if (songs.length === 0) {
         return (
@@ -44,4 +44,4 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
     );
 };
 
-export default SearchContent;
+export default LikeContent;
