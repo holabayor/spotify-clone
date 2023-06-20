@@ -1,7 +1,5 @@
 import { Subscription, UserDetails } from '@/types';
-import { User } from '@supabase/auth-helpers-nextjs';
-import { useSessionContext, useUser as useSupaUser } from '@supabase/auth-helpers-react';
-import { exitCode } from 'process';
+import { useSessionContext, User, useUser as useSupaUser } from '@supabase/auth-helpers-react';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 type UserContextType = {
@@ -44,7 +42,9 @@ export const MyUserContextProvider = (props: Props) => {
 
             Promise.allSettled([getUserDetails(), getSubscription()]).then(
                 (results) => {
-                    const [userDetailsPromise, subscriptionPromise] = results;
+                    const userDetailsPromise = results[0];
+                    const subscriptionPromise = results[1];
+
                     if (userDetailsPromise.status === 'fulfilled') {
                         setUserDetails(userDetailsPromise.value.data as UserDetails);
                     }
@@ -54,6 +54,9 @@ export const MyUserContextProvider = (props: Props) => {
                     setIsLoadingData(false);
                 }
             );
+        } else if (!user && !isLoadingUser && !isLoadingData) {
+            setUserDetails(null);
+            setSubscription(null);
         }
     }, [user, isLoadingUser]);
 
