@@ -21,7 +21,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
     };
     return (
         <div
-            className='flex items-center gap-x-3 cursor-pointer w-full p-2 rounded-md'>
+            className='flex items-center gap-x-3 hover:bg-neutral-800/50 cursor-pointer w-full p-2 rounded-md'>
             <div
                 className='relative rounded-md min-h-[48px] min-w-[48px] overflow-hidden'>
                 <Image
