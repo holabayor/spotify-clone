@@ -21,10 +21,9 @@ const upsertProductRecord = async (product: Stripe.Product) => {
     image: product.images?.[0] ?? null,
     metadata: product.metadata,
   };
+
   const { error } = await supabaseAdmin.from('products').upsert([productData]);
-  if (error) {
-    throw error;
-  }
+  if (error) throw error;
   console.log('Product added ', product.id);
 };
 
@@ -44,11 +43,7 @@ const upsetPriceRecord = async (price: Stripe.Price) => {
   };
 
   const { error } = await supabaseAdmin.from('prices').upsert([priceData]);
-
-  if (error) {
-    throw error;
-  }
-
+  if (error) throw error;
   console.log('Price added ', price.id);
 };
 
@@ -82,10 +77,7 @@ const createOrRetrieveCustomer = async ({
       .from('customers')
       .insert([{ id: uuid, stripe_customer_id: customer.id }]);
 
-    if (supabaseError) {
-      throw supabaseError;
-    }
-
+    if (supabaseError) throw supabaseError;
     console.log('New customer added ', uuid);
     return customer;
   }
@@ -100,9 +92,8 @@ const copyBillingDetailsToCustomer = async (
   const customer = payment_method.customer as string;
   const { name, phone, address } = payment_method.billing_details;
 
-  if (!name || !phone || !address) {
-    return;
-  }
+  if (!name || !phone || !address) return;
+
   await stripe.customers.update(customer, {
     name,
     phone,
@@ -118,9 +109,7 @@ const copyBillingDetailsToCustomer = async (
     })
     .eq('id', uuid);
 
-  if (error) {
-    throw error;
-  }
+  if (error) throw error;
 };
 
 const manageSubscriptionStatusChange = async (
@@ -134,9 +123,7 @@ const manageSubscriptionStatusChange = async (
     .eq('stripe_customer_id', customerId)
     .single();
 
-  if (customerError) {
-    throw customerError;
-  }
+  if (customerError) throw customerError;
 
   const { id: uuid } = customerData;
 
@@ -183,9 +170,7 @@ const manageSubscriptionStatusChange = async (
     .from('subscriptions')
     .upsert([subscriptionData]);
 
-  if (subscriptionError) {
-    throw subscriptionError;
-  }
+  if (subscriptionError) throw subscriptionError;
 
   console.log('Subscription added ', subscription.id, 'for user', uuid);
 
