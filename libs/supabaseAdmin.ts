@@ -68,9 +68,7 @@ const createOrRetrieveCustomer = async ({
         },
       };
 
-    if (email) {
-      customerData.email = email;
-    }
+    if (email) customerData.email = email;
 
     const customer = await stripe.customers.create(customerData);
     const { error: supabaseError } = await supabaseAdmin
@@ -79,7 +77,7 @@ const createOrRetrieveCustomer = async ({
 
     if (supabaseError) throw supabaseError;
     console.log('New customer added ', uuid);
-    return customer;
+    return customer.id;
   }
 
   return data.stripe_customer_id;
